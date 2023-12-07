@@ -38,4 +38,27 @@ class ScoresModel
         return $query->fetchAll();
     }
 
+    public function addScore(array $newGameScore): string
+    {
+        $sql = "INSERT INTO `scores` (
+            `player`,
+            `game`,
+            `date`,
+            `score`
+            ) 
+            VALUES (
+            :player, 
+            :game, 
+            :date,
+            :score);";
+
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':player', $newGameScore['player']);
+        $query->bindParam(':game', $newGameScore['game']);
+        $query->bindParam(':date', $newGameScore['date']);
+        $query->bindParam(':score', $newGameScore['score']);
+        $query->execute();
+        return $this->db->lastInsertId();
+    }
+
 }

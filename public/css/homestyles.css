@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+#home-heading {
+    background-color: #e3d81b;
+}
+
+#table-and-form-box {
+    display: flex;
+    width: 90vw;
+    justify-content: space-around;
+}
+
+#form-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 1vw;
+}
+
+#submit-button {
+    margin-top: 2vw;
+}
+
+.center-in-t {
+    padding: 0 2vw;
+    text-align: center;
+}
+
+.winner {
+    color: green;
+    font-weight: bold;
+}

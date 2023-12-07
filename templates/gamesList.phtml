@@ -3,15 +3,42 @@
 <head>
     <meta charset="utf-8"/>
     <title>Home</title>
+    <link rel="stylesheet" href="./css/homestyles.css">
+    <script defer src="./js/addGameScore.js"></script>
 
 </head>
 <body>
+<a href="/scores">Go to Scores</a>
 
-<h1>Game List</h1>
+<div id="table-and-form-box">
+    <div>
+        <h1 id="home-heading">Game List</h1>
+        <?php echo App\ViewHelpers\GamesListHelper::displayGameList($gameList) ?>
+    </div>
+    <div id="form-box">
+        <h1>Add a score</h1>
+        <form id="scoreForm">
+                <label for="gameName">Game Name:</label>
+                <select id="game" name="game" required>
+                    <?php echo \App\ViewHelpers\GamesListHelper::gameDropdown($gameList) ?>
+                </select>
+            <label for="player">Player:</label>
+            <select id="player" name="player" required>
+                <option value="Cathy">C-dawg</option>
+                <option value="Jake">J-dawg</option>
+            </select>
 
-<?php echo App\ViewHelpers\GamesListHelper::displayGameList($gameList) ?>
+            <label for="score">Score:</label>
+            <input type="number" id="score" name="score" required>
 
-<a href="/scores">Scores</a>
+            <label for="gameDate">Game Date:</label>
+            <input type="date" id="gameDate" name="gameDate" required value="<?php echo date('Y-m-d'); ?>">
+
+            <input type="submit" value="Submit" id="submit-button">
+        </form>
+    </div>
+</div>
+
 
 </body>
 </html>

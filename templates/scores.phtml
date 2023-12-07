@@ -3,14 +3,29 @@
 <head>
     <meta charset="utf-8"/>
     <title>Scores</title>
+    <link rel="stylesheet" href="./css/homestyles.css">
 
 </head>
 <body>
-
-<h1>Scores</h1>
 <p><a href="/">Home</a></p>
+<h1>Scores</h1>
 <h2>Low is good, high is bad</h2>
-<?php echo App\ViewHelpers\ScoresHelper::displayScores($allScores) ?>
+<h3>Overall scores:</h3>
+<?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
+<h3>Scores by Game:</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Game</th>
+        <th class="center-in-t">C-dawg</th>
+        <th class="center-in-t">J-dawg</th>
+        <th class="center-in-t">Bestest</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php echo App\ViewHelpers\ScoresHelper::displayGameScores($allScores, $gameList) ?>
+    </tbody>
+</table>
 
 </body>
 </html>
