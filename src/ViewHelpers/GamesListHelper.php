@@ -7,14 +7,21 @@ class GamesListHelper
 
     public static function displayGameList(array $gameList): string
     {
-        $result = '';
+        $output = '';
         foreach ($gameList as $game) {
-            $result .=
-                '<tr>
-                    <td><a href="' . $game['link'] . '">' . $game['name'] . '</a></td>
-                    <td>Add score</td>
-                </tr>';
+            $output .=
+                '<p><a href="' . $game['link'] . '">' . $game['name'] . '</a></p>';
         }
-        return $result;
+        return $output;
+    }
+
+    public static function gameDropdown(array $gameList): string
+    {
+        $output = '';
+        foreach ($gameList as $game) {
+            $output .=
+                '<option value="' . $game['id'] . '">' . $game['name'] . '</option>';
+        }
+        return $output;
     }
 }

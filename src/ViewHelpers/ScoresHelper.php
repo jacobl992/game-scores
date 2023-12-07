@@ -37,8 +37,17 @@ class ScoresHelper
             }
         }
 
-        return '<p>Player One: ' . $player1Total . '</p>
-                <p>Player Two: ' . $player2Total . '</p>';
+        $p1WinningColor = '';
+        $p2WinningColor = '';
+
+        if ($player1Total < $player2Total) {
+            $p1WinningColor = 'winner';
+        } elseif ($p2WinningColor < $player1Total) {
+            $p2WinningColor = 'winner';
+        }
+
+        return '<p class="' . $p1WinningColor . '">C-dawg: ' . $player1Total . '</p>
+                <p class="' . $p2WinningColor . '">J-dawg: ' . $player2Total . '</p>';
 
     }
 
@@ -54,13 +63,32 @@ class ScoresHelper
         return $playerScore;
     }
 
+    public static function scoreComparison(int $player1Score, int $player2Score): string
+    {
+        $outcome = '';
+        if ($player1Score < $player2Score) {
+            $outcome = 'C-dawg';
+        } elseif ($player2Score < $player1Score) {
+            $outcome = 'J-dawg';
+        } else {
+            $outcome = 'Equality';
+        }
+        return $outcome;
+    }
+
     public static function displayGameScores($allScores, $gameList): string
     {
         $output = '';
         foreach ($gameList as $game) {
+            $cDawgScore = self::filteredScore($allScores, self::matchScores($allScores), $game['id'], 'Cathy');
+            $jDawgScore = self::filteredScore($allScores, self::matchScores($allScores), $game['id'], 'Jake');
+
+
             $output .= '<tr><td>' . $game['name'] . '</td>
-                        <td style="text-align: center">' . self::filteredScore($allScores, self::matchScores($allScores), $game['id'], 'Cathy') . '</td>
-                        <td style="text-align: center">' . self::filteredScore($allScores, self::matchScores($allScores), $game['id'], 'Jake') . '</td></tr>';
+                        <td class="center-in-t">' . $cDawgScore . '</td>
+                        <td class="center-in-t">' . $jDawgScore . '</td>
+                        <td class="center-in-t">' . self::scoreComparison($cDawgScore, $jDawgScore) . '</td></tr>';
+            ;
 
     }
         return $output;
