@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use PDO;
-use App\Entities\GameListEntity;
 
 class GamesModel
 {
