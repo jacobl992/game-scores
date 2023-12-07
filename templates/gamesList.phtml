@@ -6,12 +6,17 @@
 
 </head>
 <body>
-
+<a href="/scores">Go to Scores</a>
 <h1>Game List</h1>
-
+<table>
+    <tr>
+        <th>Game</th>
+        <th>Add Score</th>
+    </tr>
 <?php echo App\ViewHelpers\GamesListHelper::displayGameList($gameList) ?>
+</table>
 
-<a href="/scores">Scores</a>
+
 
 </body>
 </html>

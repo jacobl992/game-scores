@@ -10,9 +10,10 @@ class GamesListHelper
         $result = '';
         foreach ($gameList as $game) {
             $result .=
-                '<div>
-                    <p><a href="' . $game['link'] . '">' . $game['name'] . '</a></p>
-                </div>';
+                '<tr>
+                    <td><a href="' . $game['link'] . '">' . $game['name'] . '</a></td>
+                    <td>Add score</td>
+                </tr>';
         }
         return $result;
     }
