@@ -33,26 +33,26 @@ addScoreForm.addEventListener('submit', e => {
 
 
         // send it!
-        // fetch('./addScore', {
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     method: 'post',
-        //     body: JSON.stringify(data())
-        // })
-        //     .then(response => {
-        //         return response.json()
-        //     })
-        //     .then(responseJson => {
-        //         if (responseJson.success) {
-        //             console.log(responseJson.message);
-        //         } else {
-        //             console.log(responseJson.message);
-        //             console.log('error');
-        //         }
-        //     })
+        fetch('./addScore', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'post',
+            body: JSON.stringify(data())
+        })
+            .then(response => {
+                return response.json()
+            })
+            .then(responseJson => {
+                if (responseJson.success) {
+                    console.log(responseJson.message);
+                } else {
+                    console.log(responseJson.message);
+                    console.log('error');
+                }
+            })
     } else {
         intValidationDisplay.style.display = 'block';
         console.log('failed validation')
