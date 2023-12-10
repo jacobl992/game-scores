@@ -37,6 +37,6 @@ label {
     font-weight: bold;
 }
 
-#max-Score {
+.instructions {
     font-style: italic;
 }
