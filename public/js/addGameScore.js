@@ -1,4 +1,15 @@
 const addScoreForm = document.querySelector('#scoreForm');
+const intValidationDisplay = document.querySelector('#invalidInt');
+const formSuccess = document.querySelector('#submit-success');
+
+validation = (score) => {
+    let $result = false;
+
+    if (Number.isInteger(parseInt(score, 10)) && score > 0) {
+        $result = true;
+    }
+    return $result;
+}
 
 let data = () => {
     return {
@@ -11,27 +22,39 @@ let data = () => {
 
 addScoreForm.addEventListener('submit', e => {
     e.preventDefault()
-    console.log(data())
+    formSuccess.style.display = 'none';
+    let score = addScoreForm.elements['score'].value;
 
-    // send it!
-    fetch('./addScore', {
-        credentials: 'same-origin',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        method: 'post',
-        body: JSON.stringify(data())
-    })
-        .then(response => {
-            return response.json()
-        })
-        .then(responseJson => {
-            if (responseJson.success) {
-                console.log(responseJson.message);
-            } else {
-                console.log(responseJson.message);
-                console.log('error');
-            }
-        })
+    console.log(data())
+    if (validation(score)) {
+        console.log('data passed')
+        intValidationDisplay.style.display = 'none';
+        formSuccess.style.display = 'block';
+
+
+        // send it!
+        // fetch('./addScore', {
+        //     credentials: 'same-origin',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        //     method: 'post',
+        //     body: JSON.stringify(data())
+        // })
+        //     .then(response => {
+        //         return response.json()
+        //     })
+        //     .then(responseJson => {
+        //         if (responseJson.success) {
+        //             console.log(responseJson.message);
+        //         } else {
+        //             console.log(responseJson.message);
+        //             console.log('error');
+        //         }
+        //     })
+    } else {
+        intValidationDisplay.style.display = 'block';
+        console.log('failed validation')
+    }
 });
