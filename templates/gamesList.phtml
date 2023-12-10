@@ -16,7 +16,7 @@
         <?php echo App\ViewHelpers\GamesListHelper::displayGameList($gameList) ?>
     </div>
     <div id="form-box">
-        <h1>Add a score</h1>
+        <h1>Submit a score</h1>
         <form id="scoreForm">
                 <label for="gameName">Game Name:</label>
                 <select id="game" name="game" required>
@@ -29,12 +29,19 @@
             </select>
 
             <label for="score">Score:</label>
+            <span class="instructions">Please add 2 points to maximum score if failed</span>
             <input type="number" id="score" name="score" required>
+            <div id="invalidInt">
+                <span>Invalid input. Please input a positive integer</span>
+            </div>
 
             <label for="gameDate">Game Date:</label>
             <input type="date" id="gameDate" name="gameDate" required value="<?php echo date('Y-m-d'); ?>">
 
             <input type="submit" value="Submit" id="submit-button">
+            <div id="submit-success">
+                <span>Score successfully submitted</span>
+            </div>
         </form>
     </div>
 </div>

@@ -23,6 +23,22 @@ label {
     margin-top: 1vw;
 }
 
+#invalidInt {
+    display: none;
+    background-color: #daaaaa;
+    color: #500202;
+    margin: 0.5vw;
+}
+
+#submit-success {
+    display: none;
+    background-color: #addaaf;
+    color: #155002;
+    margin: 1vw;
+    padding: 1.5vw;
+    border-radius: 5%;
+}
+
 #submit-button {
     margin-top: 2vw;
 }
@@ -36,3 +52,9 @@ label {
     color: green;
     font-weight: bold;
 }
+
+.instructions {
+    font-style: italic;
+}
+
+
