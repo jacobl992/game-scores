@@ -36,3 +36,7 @@ label {
     color: green;
     font-weight: bold;
 }
+
+#max-Score {
+    font-style: italic;
+}
