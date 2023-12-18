@@ -4,6 +4,7 @@ namespace App\ViewHelpers;
 
 class ScoresHelper
 {
+    //which games have scores on the same day for both players
     public static function matchScores (array $allScores): array
     {
         $GameAndDateKeys = [];
@@ -21,6 +22,8 @@ class ScoresHelper
         return $matchedScores;
     }
 
+    //adding total scores for each player if both plpayer the same a game on same data
+    //adding css class to format current winner
     public static function displayTotalScore(array $allScores): string
     {
         $matchedScores = self::matchScores($allScores);
@@ -51,7 +54,8 @@ class ScoresHelper
 
     }
 
-    public static function filteredScore(array $allScores, array $matchedScores, int $game, string $player): int
+//sum scores for each player, by game
+    public static function filteredScoreByGame(array $allScores, array $matchedScores, int $game, string $player): int
     {
         $playerScore = 0;
         foreach ($allScores as $score) {
@@ -63,6 +67,7 @@ class ScoresHelper
         return $playerScore;
     }
 
+    //compare scores between platers and output winner
     public static function scoreComparison(int $player1Score, int $player2Score): string
     {
         $outcome = '';
@@ -76,12 +81,13 @@ class ScoresHelper
         return $outcome;
     }
 
+    //output scores for each game and player and the winner
     public static function displayGameScores($allScores, $gameList): string
     {
         $output = '';
         foreach ($gameList as $game) {
-            $cDawgScore = self::filteredScore($allScores, self::matchScores($allScores), $game['id'], 'Cathy');
-            $jDawgScore = self::filteredScore($allScores, self::matchScores($allScores), $game['id'], 'Jake');
+            $cDawgScore = self::filteredScoreByGame($allScores, self::matchScores($allScores), $game['id'], 'Cathy');
+            $jDawgScore = self::filteredScoreByGame($allScores, self::matchScores($allScores), $game['id'], 'Jake');
 
 
             $output .= '<tr><td>' . $game['name'] . '</td>
@@ -92,5 +98,10 @@ class ScoresHelper
 
     }
         return $output;
+    }
+
+    public static function test()
+    {
+        return '<p>testing<p>';
     }
 }
