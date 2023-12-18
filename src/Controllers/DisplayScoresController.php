@@ -27,6 +27,7 @@ class DisplayScoresController extends Controller
     {
             $args['allScores'] = $this->scoresModel->getScores();
             $args['gameList'] = $this->gamesModel->getGameList();
+            $args['dateList'] = $this->scoresModel->getUniqueDates();
         return $this->renderer->render($response, 'scores.phtml', $args);
     }
 

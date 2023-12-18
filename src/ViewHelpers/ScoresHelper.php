@@ -4,6 +4,19 @@ namespace App\ViewHelpers;
 
 class ScoresHelper
 {
+    //need to reformat date string
+    public static function datesDropdown(array $dateList): string
+    {
+        $output = '';
+        print_r($dateList);
+
+        foreach ($dateList as $date) {
+            $output .=
+                '<option value="' . $date['date'] . '">' . $date['date'] . '</option>';
+        }
+        return $output;
+    }
+
     //which games have scores on the same day for both players
     public static function matchScores (array $allScores): array
     {
@@ -98,10 +111,5 @@ class ScoresHelper
 
     }
         return $output;
-    }
-
-    public static function test()
-    {
-        return '<p>testing<p>';
     }
 }

@@ -38,6 +38,14 @@ class ScoresModel
         return $query->fetchAll();
     }
 
+    public function getUniqueDates(): array {
+        $sql = 'SELECT DISTINCT `date`
+                FROM `scores`';
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
     public function addScore(array $newGameScore): string
     {
         $sql = "INSERT INTO `scores` (

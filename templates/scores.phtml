@@ -12,6 +12,15 @@
 <p class="instructions">Currently, scores are only added to total if both players played the same game on the same day</p>
 <h2>Low is good, high is bad</h2>
 <h3>Overall scores:</h3>
+<!-- next need js to send value, and query to handle it, controller updates -->
+<!-- if a date is selected and sent, it will hide the scores table below,
+and a new scores table using filtered data for that date will be used -->
+<!-- there will likewise be an option for a range of dates, which again will hide and use different query -->
+<label for="date">Dates:</label>
+                <select id="date" name="date" required>
+                    <?php echo \App\ViewHelpers\ScoresHelper::datesDropdown($dateList) ?>
+                </select>
+<button>Filter</button>
 <?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
 <h3>Scores by Game:</h3>
 <table>
@@ -27,7 +36,6 @@
     <?php echo App\ViewHelpers\ScoresHelper::displayGameScores($allScores, $gameList) ?>
     </tbody>
 </table>
-<?php echo App\ViewHelpers\ScoresHelper::test() ?>
 
 </body>
 </html>
