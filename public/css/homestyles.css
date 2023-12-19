@@ -56,11 +56,3 @@ label {
 .instructions {
     font-style: italic;
 }
-
-#unresponsive-table {
-    display: block;
-}
-
-#responsive-table {
-    display: none;
-}
