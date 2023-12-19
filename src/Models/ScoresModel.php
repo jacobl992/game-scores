@@ -63,6 +63,14 @@ class ScoresModel
         return $query->fetchAll();
     }
 
+    public function getUniquePlayers(): array {
+        $sql = 'SELECT DISTINCT `player`
+                FROM `scores`';
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
     public function addScore(array $newGameScore): string
     {
         $sql = "INSERT INTO `scores` (

@@ -4,6 +4,18 @@ namespace App\ViewHelpers;
 
 class ScoresHelper
 {
+    //player dropdown
+    public static function playerDropdown(array $players): string
+    {
+        $output = '';
+        foreach ($players as $player) {
+            $output .=
+                '<li><a href="/players/{player}">' . $player['player'] . '</a></li>';
+        }
+        return $output;
+    }
+
+    //dateDropdown
     //need to reformat date string
     public static function datesDropdown(array $dateList): string
     {
