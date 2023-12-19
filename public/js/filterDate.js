@@ -2,6 +2,8 @@ const dateSelect = document.querySelector('.date');
 const filterButton = document.querySelector('.filter-button');
 const clearFilter = document.querySelector('.clear-filter');
 const dateOnLoad = document.querySelector('#selected-date');
+const alert = document.querySelector('.alert');
+let date = dateSelect.value;
 
 const initialDateParameter = () => {
     const pathSegments = window.location.pathname.split('/');
@@ -25,9 +27,11 @@ clearFilter.addEventListener('click', e => {
 })
 
 filterButton.addEventListener('click', e => {
-    let date = dateSelect.value;
-    console.log(date);
-    if (window.location.href !== `../scores/${date}`) {
-            window.location.href = `../scores/${date}`;
-            }
+    date = dateSelect.value;
+    if (!date) {
+        alert.style.display = 'block';
+        alert.innerHTML = 'Date not selected';
+    } else if (window.location.href !== `../scores/${date}`) {
+        window.location.href = `../scores/${date}`;
+    }
 });

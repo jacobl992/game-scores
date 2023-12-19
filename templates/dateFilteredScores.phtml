@@ -18,11 +18,13 @@
 <h3>Overall scores:</h3>
 
 <label for="date">Dates:</label>
-                <select class="date" name="date" required>
-                    <?php echo \App\ViewHelpers\ScoresHelper::datesDropdown($dateList) ?>
-                </select>
+<select class="date" name="date" required>
+    <option value="">Select a date</option>
+    <?php echo \App\ViewHelpers\ScoresHelper::datesDropdown($dateList) ?>
+</select>
 <button class="filter-button">Filter</button>
 <button class="clear-filter">Clear Date Filter</button>
+<div class="alert"></div>
 <?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
 <h3>Scores by Game:</h3>
 <table>
