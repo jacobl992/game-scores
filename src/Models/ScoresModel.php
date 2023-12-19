@@ -12,14 +12,31 @@ class ScoresModel
         $this->db = $db;
     }
 
-    public function getScores(): array {
-        $sql = 'SELECT `id`,
+    public function getScores(?string $date = null): array
+    {
+        if ($date === null) {
+            $sql = 'SELECT `id`,
                 `player`,
                 `game`,
                 `date`,
                 `score`
                 FROM `scores`;';
+        } else {
+            $sql = 'SELECT `id`,
+                `player`,
+                `game`,
+                `date`,
+                `score`
+                FROM `scores`
+                WHERE `date` = :date;';
+        }
+
         $query = $this->db->prepare($sql);
+
+        if ($date !== null) {
+            $query->bindParam(':date', $date);
+        }
+
         $query->execute();
         return $query->fetchAll();
     }
@@ -68,5 +85,4 @@ class ScoresModel
         $query->execute();
         return $this->db->lastInsertId();
     }
-
 }

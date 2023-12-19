@@ -2,27 +2,27 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Scores</title>
-    <link rel="stylesheet" href="./css/homestyles.css">
-    <script defer src="./js/goToFilterDate.js"></script>
+    <title>Scores by Date</title>
+    <link rel="stylesheet" href="../css/homestyles.css">
+    <script defer src="../js/filterDate.js"></script>
 
 
 </head>
 <body>
 <p><a href="/">Home</a></p>
-<h1>Scores</h1>
+<h1>Scores Filtered by Date</h1>
 <p class="instructions">Currently, scores are only added to total if both players played the same game on the same day</p>
+<p class="instructions">The below scores a filtered by date</p>
+
 <h2>Low is good, high is bad</h2>
 <h3>Overall scores:</h3>
-<!-- next need js to send value, and query to handle it, controller updates -->
-<!-- if a date is selected and sent, it will hide the scores table below,
-and a new scores table using filtered data for that date will be used -->
-<!-- there will likewise be an option for a range of dates, which again will hide and use different query -->
+
 <label for="date">Dates:</label>
-                <select id="date" name="date" required>
+                <select class="date" name="date" required>
                     <?php echo \App\ViewHelpers\ScoresHelper::datesDropdown($dateList) ?>
                 </select>
-<button id="filter-button">Filter</button>
+<button class="filter-button">Filter</button>
+<button class="clear-filter">Clear Date Filter</button>
 <?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
 <h3>Scores by Game:</h3>
 <table>

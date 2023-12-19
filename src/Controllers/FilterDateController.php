@@ -3,13 +3,13 @@
 namespace App\Controllers;
 
 use App\Abstracts\Controller;
-use App\Models\GamesModel;
-use App\Models\ScoresModel;
-use Psr\Http\Message\RequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
+use App\Models\ScoresModel;
+use App\Models\GamesModel;
 
-class DisplayScoresController extends Controller
+class FilterDateController extends Controller
 {
     private PhpRenderer $renderer;
     private ScoresModel $scoresModel;
@@ -24,10 +24,12 @@ class DisplayScoresController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $args['allScores'] = $this->scoresModel->getScores();
+        $date = $args['date'];
+
+        $args['allScores'] = $this->scoresModel->getScores($date);
         $args['gameList'] = $this->gamesModel->getGameList();
         $args['dateList'] = $this->scoresModel->getUniqueDates();
-        return $this->renderer->render($response, 'scores.phtml', $args);
+        return $this->renderer->render($response, 'dateFilteredScores.phtml', $args);
     }
 
 }

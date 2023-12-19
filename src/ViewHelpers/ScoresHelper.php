@@ -8,8 +8,6 @@ class ScoresHelper
     public static function datesDropdown(array $dateList): string
     {
         $output = '';
-        print_r($dateList);
-
         foreach ($dateList as $date) {
             $output .=
                 '<option value="' . $date['date'] . '">' . $date['date'] . '</option>';
