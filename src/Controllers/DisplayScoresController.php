@@ -13,7 +13,6 @@ class DisplayScoresController extends Controller
 {
     private PhpRenderer $renderer;
     private ScoresModel $scoresModel;
-
     private GamesModel $gamesModel;
 
     public function __construct(PhpRenderer $renderer, ScoresModel $scoresModel, GamesModel $gamesModel)
@@ -25,8 +24,9 @@ class DisplayScoresController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-            $args['allScores'] = $this->scoresModel->getScores();
-            $args['gameList'] = $this->gamesModel->getGameList();
+        $args['allScores'] = $this->scoresModel->getScores();
+        $args['gameList'] = $this->gamesModel->getGameList();
+        $args['dateList'] = $this->scoresModel->getUniqueDates();
         return $this->renderer->render($response, 'scores.phtml', $args);
     }
 

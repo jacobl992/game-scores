@@ -57,4 +57,11 @@ label {
     font-style: italic;
 }
 
-
+.alert {
+    display: none;
+    background-color: #f2d6d6;
+    padding: 1vw;
+    width: 14vw;
+    color:#500202;
+    margin: 1px;
+}
