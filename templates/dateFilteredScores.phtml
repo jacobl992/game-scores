@@ -10,7 +10,7 @@
 </head>
 <body>
 <p><a href="/">Home</a></p>
-<h1>Scores Filtered by Date</h1>
+<h1>Scores Filtered to <span id="selected-date"></span></h1>
 <p class="instructions">Currently, scores are only added to total if both players played the same game on the same day</p>
 <p class="instructions">The below scores a filtered by date</p>
 
@@ -38,7 +38,6 @@
     <?php echo App\ViewHelpers\ScoresHelper::displayGameScores($allScores, $gameList) ?>
     </tbody>
 </table>
-<?php var_dump($dateList) ?>
 
 </body>
 </html>
