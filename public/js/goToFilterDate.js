@@ -3,7 +3,6 @@ const filterButton = document.querySelector('#filter-button');
 const alert = document.querySelector('.alert');
 let date = dateSelect.value;
 
-
 filterButton.addEventListener('click', e => {
     date = dateSelect.value;
     if (!date) {

@@ -12,7 +12,5 @@ return function (App $app) {
     $app->get('/', DisplayGamesController::class);
     $app->get('/scores', DisplayScoresController::class);
     $app->post('/addScore', AddScoreController::class);
-
-    $app->get('/scores/{date}', FilterDateController::class);
-    
+    $app->get('/scores/{date}', FilterDateController::class);  
 };

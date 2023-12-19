@@ -5,9 +5,8 @@
     <title>Scores</title>
     <link rel="stylesheet" href="./css/homestyles.css">
     <script defer src="./js/goToFilterDate.js"></script>
-
-
 </head>
+
 <body>
 <p><a href="/">Home</a></p>
 <h1>Scores</h1>
@@ -20,7 +19,6 @@
     <?php echo \App\ViewHelpers\ScoresHelper::datesDropdown($dateList) ?>
 </select>
 <div class="alert"></div>
-
 <button id="filter-button">Filter</button>
 <?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
 <h3>Scores by Game:</h3>
