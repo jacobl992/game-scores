@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\ScoresModel;
 use App\Models\GamesModel;
 
-class FilterDateController extends Controller
+class DisplayPlayerController extends Controller
 {
     private PhpRenderer $renderer;
     private ScoresModel $scoresModel;
@@ -24,22 +24,24 @@ class FilterDateController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $date = $args['date'];
-        $validDatesReturned = $this->scoresModel->getUniqueDates();
-        $validDates = [];
+        $player = $args['player'];
+        $validPlayersReturned = $this->scoresModel->getUniquePlayers();
+        $validPlayers = [];
 
-        foreach ($validDatesReturned as $validDateReturned) {
-            $validDates[] = $validDateReturned['date'];
+        foreach ($validPlayersReturned as $validPlayerReturned) {
+            $validPlayers[] = $validPlayerReturned['player'];
         }
 
-        if (!in_array($date, $validDates)) {
-            return $response->withStatus(400)->withJson(['Error' => $date . ' not in database']);
+        if (!in_array($player, $validPlayers)) {
+            return $response->withStatus(400)->withJson(['Error' => $player . ' not in database']);
         }
 
-        $args['allScores'] = $this->scoresModel->getScores($date);
+        $args['allScores'] = $this->scoresModel->getScores();
         $args['gameList'] = $this->gamesModel->getGameList();
         $args['dateList'] = $this->scoresModel->getUniqueDates();
-        return $this->renderer->render($response, 'onDateCompareScores.phtml', $args);
+        $args['players'] = $this->scoresModel->getUniquePlayers();
+        $args['mostRecentDates'] = $this->scoresModel->getFiveMostRecentDates();
+        return $this->renderer->render($response, 'playerScores.phtml', $args);
     }
 
 }

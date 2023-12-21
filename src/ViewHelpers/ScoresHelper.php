@@ -4,6 +4,18 @@ namespace App\ViewHelpers;
 
 class ScoresHelper
 {
+    //player dropdown
+    public static function playerPageLinks(array $players): string
+    {
+        $output = '';
+        foreach ($players as $player) {
+            $output .=
+                '<p></p><a href="/players/' . $player['player'] . '">' . $player['player'] . '&#39s scores</a></p>';
+        }
+        return $output;
+    }
+
+    //dateDropdown
     //need to reformat date string
     public static function datesDropdown(array $dateList): string
     {
@@ -16,7 +28,7 @@ class ScoresHelper
     }
 
     //which games have scores on the same day for both players
-    public static function matchScores (array $allScores): array
+    public static function matchScores(array $allScores): array
     {
         $GameAndDateKeys = [];
         foreach ($allScores as $score) {
@@ -33,7 +45,7 @@ class ScoresHelper
         return $matchedScores;
     }
 
-    //adding total scores for each player if both plpayer the same a game on same data
+    //adding total scores for each player if both played the same a game on same data
     //adding css class to format current winner
     public static function displayTotalScore(array $allScores): string
     {
@@ -78,7 +90,7 @@ class ScoresHelper
         return $playerScore;
     }
 
-    //compare scores between platers and output winner
+    //compare scores between players and output winner
     public static function scoreComparison(int $player1Score, int $player2Score): string
     {
         $outcome = '';
@@ -104,10 +116,9 @@ class ScoresHelper
             $output .= '<tr><td>' . $game['name'] . '</td>
                         <td class="center-in-t">' . $cDawgScore . '</td>
                         <td class="center-in-t">' . $jDawgScore . '</td>
-                        <td class="center-in-t">' . self::scoreComparison($cDawgScore, $jDawgScore) . '</td></tr>';
-            ;
+                        <td class="center-in-t">' . self::scoreComparison($cDawgScore, $jDawgScore) . '</td></tr>';;
 
-    }
+        }
         return $output;
     }
 }

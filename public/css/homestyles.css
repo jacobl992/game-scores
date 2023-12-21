@@ -65,3 +65,19 @@ label {
     color:#500202;
     margin: 1px;
 }
+
+.improTable {
+    display: flex;
+}
+
+.table-col-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1vw;
+}
+
+.table-col-div p {
+    padding: 0;
+    margin: 3px 0;
+}

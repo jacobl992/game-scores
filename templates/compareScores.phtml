@@ -8,8 +8,11 @@
 </head>
 
 <body>
-<p><a href="/">Home</a></p>
-<h1>Scores</h1>
+<nav>
+<p></p><a href="/">Home</a>
+    <?php echo \App\ViewHelpers\ScoresHelper::playerPageLinks($players) ?>
+</nav>
+<h1>Score Comparison</h1>
 <p class="instructions">Currently, scores are only added to total if both players played the same game on the same day</p>
 <h2>Low is good, high is bad</h2>
 <h3>Overall scores:</h3>
