@@ -5,7 +5,7 @@ const formSuccess = document.querySelector('#submit-success');
 const validation = (score) => {
     let result = false;
 
-    if (Number.isInteger(parseInt(score, 10)) && score > 0) {
+    if (Number.isInteger(parseInt(score, 10)) && score >= 0) {
         result = true;
     }
     return result;
