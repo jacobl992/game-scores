@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use PDO;
+
 class ScoresModel
 {
     protected PDO $db;
@@ -41,7 +42,8 @@ class ScoresModel
         return $query->fetchAll();
     }
 
-    public function getPlayerScores(string $player): array {
+    public function getPlayerScores(string $player): array
+    {
         $sql = 'SELECT `id`,
                 `player`,
                 `game`,
@@ -55,7 +57,8 @@ class ScoresModel
         return $query->fetchAll();
     }
 
-    public function getUniqueDates(): array {
+    public function getUniqueDates(): array
+    {
         $sql = 'SELECT DISTINCT `date`
                 FROM `scores`';
         $query = $this->db->prepare($sql);
@@ -63,7 +66,8 @@ class ScoresModel
         return $query->fetchAll();
     }
 
-    public function getUniquePlayers(): array {
+    public function getUniquePlayers(): array
+    {
         $sql = 'SELECT DISTINCT `player`
                 FROM `scores`';
         $query = $this->db->prepare($sql);

@@ -10,7 +10,7 @@ class ScoresHelper
         $output = '';
         foreach ($players as $player) {
             $output .=
-                '<li><a href="/players/{player}">' . $player['player'] . '</a></li>';
+                '<li><a href="/players/' . $player['player'] . '">' . $player['player'] . '</a></li>';
         }
         return $output;
     }
@@ -28,7 +28,7 @@ class ScoresHelper
     }
 
     //which games have scores on the same day for both players
-    public static function matchScores (array $allScores): array
+    public static function matchScores(array $allScores): array
     {
         $GameAndDateKeys = [];
         foreach ($allScores as $score) {
@@ -116,10 +116,9 @@ class ScoresHelper
             $output .= '<tr><td>' . $game['name'] . '</td>
                         <td class="center-in-t">' . $cDawgScore . '</td>
                         <td class="center-in-t">' . $jDawgScore . '</td>
-                        <td class="center-in-t">' . self::scoreComparison($cDawgScore, $jDawgScore) . '</td></tr>';
-            ;
+                        <td class="center-in-t">' . self::scoreComparison($cDawgScore, $jDawgScore) . '</td></tr>';;
 
-    }
+        }
         return $output;
     }
 }

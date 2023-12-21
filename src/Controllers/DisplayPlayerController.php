@@ -25,7 +25,7 @@ class DisplayPlayerController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $player = $args['player'];
-        $validPlayersReturned = $this->scoresModel->getUniquePlayer();
+        $validPlayersReturned = $this->scoresModel->getUniquePlayers();
         $validPlayers = [];
 
         foreach ($validPlayersReturned as $validPlayerReturned) {
@@ -36,7 +36,7 @@ class DisplayPlayerController extends Controller
             return $response->withStatus(400)->withJson(['Error' => $player . ' not in database']);
         }
 
-        $args['allScores'] = $this->scoresModel->getScores($date);
+        $args['allScores'] = $this->scoresModel->getScores();
         $args['gameList'] = $this->gamesModel->getGameList();
         $args['dateList'] = $this->scoresModel->getUniqueDates();
         return $this->renderer->render($response, 'player.phtml', $args);
