@@ -45,7 +45,7 @@ class ScoresHelper
         return $matchedScores;
     }
 
-    //adding total scores for each player if both plpayer the same a game on same data
+    //adding total scores for each player if both played the same a game on same data
     //adding css class to format current winner
     public static function displayTotalScore(array $allScores): string
     {
@@ -90,7 +90,7 @@ class ScoresHelper
         return $playerScore;
     }
 
-    //compare scores between platers and output winner
+    //compare scores between players and output winner
     public static function scoreComparison(int $player1Score, int $player2Score): string
     {
         $outcome = '';

@@ -13,6 +13,17 @@ class ScoresModel
         $this->db = $db;
     }
 
+    public function getFiveMostRecentDates(): array
+    {
+        $sql = 'SELECT DISTINCT `date`
+            FROM `scores`
+            ORDER BY date ASC
+            LIMIT 5;';
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
     public function getScores(?string $date = null): array
     {
         if ($date === null) {

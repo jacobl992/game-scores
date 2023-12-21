@@ -8,5 +8,48 @@
 </head>
 
 <body>
-<p>hello</p>
+<nav>
+    <a href="/">Home</a>
+    <ul>
+        <?php echo \App\ViewHelpers\ScoresHelper::playerDropdown($players) ?>
+    </ul>
+</nav>
+<h1><?php $currentUrl = $_SERVER['REQUEST_URI'];
+    echo explode('/', $currentUrl)[2]; ?></h1>
+<h2>Low is good, high is bad</h2>
+<h3>Overall score:</h3>
+<?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayer($allScores) ?>
+
+<h3>Scores by Game:</h3>
+<p class="instructions">Most recent 5 dates</p>
+<?php
+$day0 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[0]['date'];
+$day1 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[1]['date'];
+$day2 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[2]['date'];
+$day3 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[3]['date'];
+$day4 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[4]['date'];
+?>
+
+<div class="improTable">
+    <div class="table-col-div">
+        <?php echo App\ViewHelpers\PlayerHelper::tableGameList($gameList) ?>
+    </div>
+    <div class="table-col-div">
+        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day0) ?>
+    </div>
+    <div class="table-col-div">
+        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day1) ?>
+    </div>
+    <div class="table-col-div">
+        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day2) ?>
+    </div>
+    <div class="table-col-div">
+        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day3) ?>
+    </div>
+    <div class="table-col-div">
+        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day4) ?>
+    </div>
+</div>
+
 </body>
+</html>
