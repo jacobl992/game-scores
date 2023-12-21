@@ -108,4 +108,18 @@ class ScoresModel
         $query->execute();
         return $this->db->lastInsertId();
     }
+
+    public function scoreExistsValidation(string $player, string $game, string $date): bool
+    {
+        $sql = 'SELECT COUNT(*) as `count` FROM `scores` WHERE `player` = :player AND `game` = :game AND `date` = :date;';
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':player', $player);
+        $query->bindParam(':game', $game);
+        $query->bindParam(':date', $date);
+        $query->execute();
+
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        return ($result['count'] > 0);
+    }
 }

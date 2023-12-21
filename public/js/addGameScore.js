@@ -2,13 +2,13 @@ const addScoreForm = document.querySelector('#scoreForm');
 const intValidationDisplay = document.querySelector('#invalidInt');
 const formSuccess = document.querySelector('#submit-success');
 
-validation = (score) => {
-    let $result = false;
+const validation = (score) => {
+    let result = false;
 
     if (Number.isInteger(parseInt(score, 10)) && score > 0) {
-        $result = true;
+        result = true;
     }
-    return $result;
+    return result;
 }
 
 let data = () => {
@@ -27,10 +27,8 @@ addScoreForm.addEventListener('submit', e => {
 
     console.log(data())
     if (validation(score)) {
-        console.log('data passed')
+        console.log('data passed fe validation')
         intValidationDisplay.style.display = 'none';
-        formSuccess.style.display = 'block';
-
 
         // send it!
         fetch('./addScore', {
@@ -48,8 +46,11 @@ addScoreForm.addEventListener('submit', e => {
             .then(responseJson => {
                 if (responseJson.success) {
                     console.log(responseJson.message);
+                    formSuccess.style.display = 'block';
                 } else {
                     console.log(responseJson.message);
+                    intValidationDisplay.innerHTML = responseJson.message;
+                    intValidationDisplay.style.display = 'block';
                     console.log('error');
                 }
             })

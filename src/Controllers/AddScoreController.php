@@ -31,22 +31,31 @@ class AddScoreController extends Controller
         ];
         $statusCode = 400;
 
-        try {
-            $insertedId = $this->scoresModel->addScore($newGameScore);
-        } catch (\PDOException $pdoException) {
-            $responseData['message'] = 'Internal error: ' . $pdoException->getMessage();
-            $statusCode = 500;
-        } catch (\Exception $exception) {
-            $responseData['message'] = $exception->getMessage();
-        }
-
-        if (isset($insertedId) && $insertedId) {
+        if ($this->scoresModel->scoreExistsValidation($newGameScore['player'], $newGameScore['game'], $newGameScore['date'])) {
             $responseData = [
-                'success' => true,
-                'message' => 'New score successfully added.',
+                'success' => false,
+                'message' => 'Entry already exists',
                 'data' => []
             ];
-            $statusCode = 200;
+            $statusCode = 422;
+        } else {
+            try {
+                $insertedId = $this->scoresModel->addScore($newGameScore);
+            } catch (\PDOException $pdoException) {
+                $responseData['message'] = 'Internal error: ' . $pdoException->getMessage();
+                $statusCode = 500;
+            } catch (\Exception $exception) {
+                $responseData['message'] = $exception->getMessage();
+            }
+
+            if (isset($insertedId) && $insertedId) {
+                $responseData = [
+                    'success' => true,
+                    'message' => 'New score successfully added.',
+                    'data' => []
+                ];
+                $statusCode = 200;
+            }
         }
         return $this->respondWithJson($response, $responseData, $statusCode);
     }
