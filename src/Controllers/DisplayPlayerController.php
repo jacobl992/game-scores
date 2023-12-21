@@ -41,7 +41,7 @@ class DisplayPlayerController extends Controller
         $args['dateList'] = $this->scoresModel->getUniqueDates();
         $args['players'] = $this->scoresModel->getUniquePlayers();
         $args['mostRecentDates'] = $this->scoresModel->getFiveMostRecentDates();
-        return $this->renderer->render($response, 'player.phtml', $args);
+        return $this->renderer->render($response, 'playerScores.phtml', $args);
     }
 
 }

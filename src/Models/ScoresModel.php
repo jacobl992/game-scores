@@ -17,7 +17,7 @@ class ScoresModel
     {
         $sql = 'SELECT DISTINCT `date`
             FROM `scores`
-            ORDER BY date ASC
+            ORDER BY `date` DESC
             LIMIT 5;';
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -71,7 +71,8 @@ class ScoresModel
     public function getUniqueDates(): array
     {
         $sql = 'SELECT DISTINCT `date`
-                FROM `scores`';
+                FROM `scores`
+                ORDER BY `date` DESC';
         $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll();

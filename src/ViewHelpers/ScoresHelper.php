@@ -5,12 +5,12 @@ namespace App\ViewHelpers;
 class ScoresHelper
 {
     //player dropdown
-    public static function playerDropdown(array $players): string
+    public static function playerPageLinks(array $players): string
     {
         $output = '';
         foreach ($players as $player) {
             $output .=
-                '<li><a href="/players/' . $player['player'] . '">' . $player['player'] . '</a></li>';
+                '<p></p><a href="/players/' . $player['player'] . '">' . $player['player'] . '&#39s scores</a></p>';
         }
         return $output;
     }
