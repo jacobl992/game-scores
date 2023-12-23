@@ -29,7 +29,7 @@ class PlayerHelper
 
     public static function tableGameList(array $gameList): string
     {
-        $output = '<h4>Game</h4>';
+        $output = '<h5>Game</h5>';
         foreach ($gameList as $game) {
             $output .= '<p>' . $game['name'] . '</p>';
         }
@@ -38,7 +38,7 @@ class PlayerHelper
 
     public static function getTotalScoreForPlayerOnDate(array $allScores, array $gameList, string $date): string
     {
-        $output = '<h4>' . $date . '</h4>';
+        $output = '<h5>' . $date . '</h5>';
         foreach ($gameList as $game) {
             $autoOutput = '<p>0</p>';
             $scoreOutput = '';

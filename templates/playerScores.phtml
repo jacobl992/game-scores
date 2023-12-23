@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php require_once 'partials/head.phtml'?>
+    <?php require_once 'partials/head.phtml' ?>
     <title>Player</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/homestyles.css">
@@ -11,16 +11,8 @@
 </head>
 
 <body>
-<?php require_once 'partials/nav.phtml'?>
+<?php require_once 'partials/nav.phtml';
 
-<h1><?php $currentUrl = $_SERVER['REQUEST_URI'];
-    echo explode('/', $currentUrl)[2]; ?></h1>
-<h3>Overall score:
-    <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayer($allScores) ?>
-</h3>
-<h3>Scores by Game:</h3>
-<p class="instructions">Low is good, high is bad. Table shows scores for most recent 5 dates in db</p>
-<?php
 $day0 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[4]['date'];
 $day1 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[3]['date'];
 $day2 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[2]['date'];
@@ -28,26 +20,38 @@ $day3 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[1]['d
 $day4 = App\ViewHelpers\PlayerHelper::getMostRecentDates($mostRecentDates)[0]['date'];
 ?>
 
-<div class="improTable">
-    <div class="table-col-div">
-        <?php echo App\ViewHelpers\PlayerHelper::tableGameList($gameList) ?>
-    </div>
-    <div class="table-col-div">
-        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day0) ?>
-    </div>
-    <div class="table-col-div">
-        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day1) ?>
-    </div>
-    <div class="table-col-div">
-        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day2) ?>
-    </div>
-    <div class="table-col-div">
-        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day3) ?>
-    </div>
-    <div class="table-col-div">
-        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day4) ?>
+<div class="main-content">
+    <h2 class="player-heading"><?php $currentUrl = $_SERVER['REQUEST_URI'];
+        echo explode('/', $currentUrl)[2]; ?></h2>
+    <h3 class="listpage-heading">Overall score:
+        <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayer($allScores) ?>
+    </h3>
+    <h3 class="listpage-heading">Scores by Game:</h3>
+    <span class="instructions">Table shows scores for most recent 5 dates in db. Low is good, high is bad.</span>
+
+
+    <div class="improTable">
+        <div class="table-col-div imrpo-t-game">
+            <?php echo App\ViewHelpers\PlayerHelper::tableGameList($gameList) ?>
+        </div>
+        <div class="table-col-div">
+            <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day0) ?>
+        </div>
+        <div class="table-col-div">
+            <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day1) ?>
+        </div>
+        <div class="table-col-div">
+            <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day2) ?>
+        </div>
+        <div class="table-col-div">
+            <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day3) ?>
+        </div>
+        <div class="table-col-div">
+            <?php echo App\ViewHelpers\PlayerHelper::getTotalScoreForPlayerOnDate($allScores, $gameList, $day4) ?>
+        </div>
     </div>
 </div>
-
+<?php require_once 'partials/footer.phtml' ?>
 </body>
+
 </html>
