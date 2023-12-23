@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php require_once 'partials/head.phtml'?>
+    <?php require_once 'partials/head.phtml' ?>
     <title>Home</title>
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/homestyles.css">
@@ -12,20 +12,22 @@
 
 </head>
 <body>
-<?php require_once 'partials/nav.phtml'?>
+<?php require_once 'partials/nav.phtml' ?>
 
-<div id="table-and-form-box">
+<div id="list-and-form-box">
     <div>
-        <h1 id="home-heading">Game List</h1>
-        <?php echo App\ViewHelpers\GamesListHelper::displayGameList($gameList) ?>
+        <h3 class="listpage-heading">Game List</h3>
+        <div id="list-box">
+            <?php echo App\ViewHelpers\GamesListHelper::displayGameList($gameList) ?>
+        </div>
     </div>
     <div id="form-box">
-        <h1>Submit a score</h1>
+        <h3 class="listpage-heading">Submit a Score</h3>
         <form id="scoreForm">
-                <label for="gameName">Game Name:</label>
-                <select id="game" name="game" required>
-                    <?php echo \App\ViewHelpers\GamesListHelper::gameDropdown($gameList) ?>
-                </select>
+            <label for="gameName">Game:</label>
+            <select id="game" name="game" required>
+                <?php echo \App\ViewHelpers\GamesListHelper::gameDropdown($gameList) ?>
+            </select>
             <label for="player">Player:</label>
             <select id="player" name="player" required>
                 <option value="Cathy">C-dawg</option>
@@ -41,8 +43,9 @@
 
             <label for="gameDate">Game Date:</label>
             <input type="date" id="gameDate" name="gameDate" required value="<?php echo date('Y-m-d'); ?>">
-
-            <input type="submit" value="Submit" id="submit-button">
+            <div id="submit-div">
+                <input type="submit" value="Submit" id="submit-button">
+            </div>
             <div id="submit-success">
                 <span>Score successfully submitted</span>
             </div>
@@ -50,6 +53,6 @@
     </div>
 </div>
 
-
+<?php require_once 'partials/footer.phtml' ?>
 </body>
 </html>

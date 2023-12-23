@@ -4,14 +4,37 @@
     box-sizing: border-box;
 }
 
-#home-heading {
-    background-color: #e3d81b;
+body {
+    font-family: 'Helvetica', serif;
+    background-image: url("../imgs/flam-bg-1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
-#table-and-form-box {
+#list-and-form-box {
     display: flex;
-    width: 90vw;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.listpage-heading {
+    text-align: center;
+    color: rebeccapurple;
+}
+
+#list-box {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    gap: 4vw;
+    margin-bottom: 5vw;
+}
+
+#list-box a {
+    color: inherit;
 }
 
 #form-box form {
@@ -20,7 +43,17 @@
 }
 
 label {
-    margin-top: 1vw;
+    margin-top: 3vw;
+}
+
+#submit-div {
+    margin-top: 3vw;
+    display: flex;
+    justify-content: center;
+}
+
+#submit-button {
+    padding: 1vw 4vw;
 }
 
 #invalidInt {
@@ -84,5 +117,25 @@ label {
 
 .nav-box {
     display: flex;
+    flex-flow: wrap;
     justify-content: space-evenly;
+    gap: 1vw;
+}
+
+.nav-box a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer {
+    margin-top: 6vw;
+    display: flex;
+    justify-content: end;
+}
+
+.h-and-f {
+    background-color: #cb74a3;
+    width: 100vw;
+    padding: 2vw;
+    color: #ffffff;
 }
