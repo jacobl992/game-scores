@@ -76,9 +76,50 @@ label {
     margin-top: 2vw;
 }
 
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 2vw;
+}
+
+.main-content h3 {
+    margin-top: 6vw;
+    margin-bottom: 2vw
+}
+
+.overall-scores p {
+    margin: 2vw;
+    text-align: center;
+}
+
+.filter-header {
+    margin-top: 1vw;
+    margin-bottom: 3vw;
+    font-weight: bold;
+}
+
+.t-game-header {
+    text-align: start;
+}
+
 .center-in-t {
     padding: 0 2vw;
     text-align: center;
+}
+
+table {
+    background-color: rgb(255, 255, 255, 0.4);
+}
+
+table, th, td {
+    border: 1px solid #cc87d2;
+}
+
+.filter-box {
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
 }
 
 .winner {
@@ -88,6 +129,7 @@ label {
 
 .instructions {
     font-style: italic;
+    text-align: center;
 }
 
 .alert {
