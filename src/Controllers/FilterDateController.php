@@ -39,6 +39,7 @@ class FilterDateController extends Controller
         $args['allScores'] = $this->scoresModel->getScores($date);
         $args['gameList'] = $this->gamesModel->getGameList();
         $args['dateList'] = $this->scoresModel->getUniqueDates();
+        $args['players'] = $this->scoresModel->getUniquePlayers();
         return $this->renderer->render($response, 'onDateCompareScores.phtml', $args);
     }
 

@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <?php require_once 'partials/head.phtml'?>
     <title>Home</title>
+    <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/homestyles.css">
+    <link rel="icon" href="images/tabicon.png" sizes="192x192">
+    <link rel="shortcut icon" href="images/tabicon.png">
+    <link rel="apple-touch-icon" href="images/tabicon.png">
     <script defer src="./js/addGameScore.js"></script>
 
 </head>
 <body>
-<p><a href="/scores">Score Comparison</a></p>
+<?php require_once 'partials/nav.phtml'?>
 
 <div id="table-and-form-box">
     <div>

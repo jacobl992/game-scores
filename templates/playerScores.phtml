@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <?php require_once 'partials/head.phtml'?>
     <title>Player</title>
+    <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/homestyles.css">
-    <!-- <script defer src="../js/goToFilterDate.js"></script> -->
+    <link rel="icon" href="images/tabicon.png" sizes="192x192">
+    <link rel="shortcut icon" href="images/tabicon.png">
+    <link rel="apple-touch-icon" href="images/tabicon.png">
 </head>
 
 <body>
-<nav>
-    <a href="/">Home</a>
-    <ul>
-        <?php echo \App\ViewHelpers\ScoresHelper::playerPageLinks($players) ?>
-    </ul>
-</nav>
+<?php require_once 'partials/nav.phtml'?>
+
 <h1><?php $currentUrl = $_SERVER['REQUEST_URI'];
     echo explode('/', $currentUrl)[2]; ?></h1>
 <h3>Overall score:
