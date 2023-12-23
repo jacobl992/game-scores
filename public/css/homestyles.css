@@ -207,3 +207,41 @@ table, th, td {
     padding: 0;
     margin: 3px 0;
 }
+
+@media screen and (min-width: 750px) {
+
+    .main-content h3 {
+        margin-top: 1vw;
+    }
+
+    .listpage-heading {
+        margin: 0;
+    }
+
+    .improTable p {
+        font-size: 2vw;
+    }
+
+    .improTable h5 {
+        margin: 0;
+        height: auto;
+        font-size: 2.2vw;
+    }
+
+    .imrpo-t-game {
+        width: 18vw;
+    }
+
+    #list-box {
+        margin: 0 6vw;
+        margin-top: 1vw;
+    }
+
+    #form-box {
+        margin-top: 3vw;
+    }
+
+    .game-list-and-header-box {
+        margin-top: 2vw;
+    }
+}
