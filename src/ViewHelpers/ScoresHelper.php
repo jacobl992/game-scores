@@ -10,7 +10,7 @@ class ScoresHelper
         $output = '';
         foreach ($players as $player) {
             $output .=
-                '<p></p><a href="/players/' . $player['player'] . '">' . $player['player'] . '&#39s scores</a></p>';
+                '<a href="/players/' . $player['player'] . '">' . $player['player'] . '&#39s scores</a> ';
         }
         return $output;
     }

@@ -81,3 +81,8 @@ label {
     padding: 0;
     margin: 3px 0;
 }
+
+.nav-box {
+    display: flex;
+    justify-content: space-evenly;
+}

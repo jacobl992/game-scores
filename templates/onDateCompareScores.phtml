@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <?php require_once 'partials/head.phtml'?>
     <title>Scores by Date</title>
+    <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/homestyles.css">
+    <link rel="icon" href="images/tabicon.png" sizes="192x192">
+    <link rel="shortcut icon" href="images/tabicon.png">
+    <link rel="apple-touch-icon" href="images/tabicon.png">
     <script defer src="../js/filterDate.js"></script>
 </head>
 
 <body>
-<p><a href="/">Home</a></p>
+<?php require_once 'partials/nav.phtml'?>
 <h1>Scores Filtered to <span id="selected-date"></span></h1>
 <p class="instructions">Currently, scores are only added to total if both players played the same game on the same day</p>
 <p class="instructions">The below scores a filtered by date</p>

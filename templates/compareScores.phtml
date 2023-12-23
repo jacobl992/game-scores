@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <?php require_once 'partials/head.phtml'?>
     <title>Scores</title>
+    <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/homestyles.css">
+    <link rel="icon" href="images/tabicon.png" sizes="192x192">
+    <link rel="shortcut icon" href="images/tabicon.png">
+    <link rel="apple-touch-icon" href="images/tabicon.png">
     <script defer src="./js/goToFilterDate.js"></script>
 </head>
 
 <body>
-<nav>
-<p></p><a href="/">Home</a>
-    <?php echo \App\ViewHelpers\ScoresHelper::playerPageLinks($players) ?>
-</nav>
+<?php require_once 'partials/nav.phtml'?>
+
 <h1>Score Comparison</h1>
 <p class="instructions">Currently, scores are only added to total if both players played the same game on the same day</p>
 <h2>Low is good, high is bad</h2>
