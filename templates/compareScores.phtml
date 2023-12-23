@@ -22,15 +22,17 @@
         <h3 class="listpage-heading">Overall scores:</h3>
         <?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
     </div>
+
     <span class="filter-header">Filter by date:</span>
     <div class="filter-box">
         <select id="date" name="date" required>
             <option value="">Select a date</option>
             <?php echo \App\ViewHelpers\ScoresHelper::datesDropdown($dateList) ?>
         </select>
-        <div class="alert"></div>
         <button id="filter-button">Filter</button>
     </div>
+    <div class="alert"></div>
+
     <h3 class="listpage-heading">Scores by Game:</h3>
     <table>
         <thead>

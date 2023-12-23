@@ -134,11 +134,12 @@ table, th, td {
 
 .alert {
     display: none;
-    background-color: #f2d6d6;
+    background-color: #fce7a7;
     padding: 1vw;
-    width: 14vw;
-    color:#500202;
-    margin: 1px;
+    margin: 2vw;
+    width: 80vw;
+    color: #49010b;
+    text-align: center;
 }
 
 .improTable {

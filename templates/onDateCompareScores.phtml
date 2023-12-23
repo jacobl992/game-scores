@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php require_once 'partials/head.phtml'?>
+    <?php require_once 'partials/head.phtml' ?>
     <title>Scores by Date</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/homestyles.css">
@@ -12,36 +12,45 @@
 </head>
 
 <body>
-<?php require_once 'partials/nav.phtml'?>
-<h1>Scores Filtered to <span id="selected-date"></span></h1>
-<p class="instructions">Currently, scores are only added to total if both players played the same game on the same day</p>
-<p class="instructions">The below scores a filtered by date</p>
-<h2>Low is good, high is bad</h2>
-<h3>Overall scores:</h3>
-<label for="date">Dates:</label>
-<select class="date" name="date" required>
-    <option value="">Select a date</option>
-    <?php echo \App\ViewHelpers\ScoresHelper::datesDropdown($dateList) ?>
-</select>
-<button class="filter-button">Filter</button>
-<button class="clear-filter">Clear Date Filter</button>
-<div class="alert"></div>
-<?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
-<h3>Scores by Game:</h3>
-<table>
-    <thead>
-    <tr>
-        <th>Game</th>
-        <th class="center-in-t">C-dawg</th>
-        <th class="center-in-t">J-dawg</th>
-        <th class="center-in-t">Bestest</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php echo App\ViewHelpers\ScoresHelper::displayGameScores($allScores, $gameList) ?>
-    </tbody>
-</table>
-<?php require_once 'partials/footer.phtml' ?>
+<?php require_once 'partials/nav.phtml' ?>
+<div class="main-content">
+    <h3 class="listpage-heading">Scores filtered to <span id="selected-date"></span></h3>
+    <span class="instructions">Currently, scores are only added to total if both players played the same game on the same day</span>
+    <span class="instructions">The below scores a filtered by date</span>
+    <span class="instructions">Low is good, high is bad</span>
 
+    <div class="overall-scores">
+        <h3 class="listpage-heading">Overall scores:</h3>
+        <?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
+    </div>
+    <span class="filter-header">Filter by date:</span>
+
+    <div class="filter-box">
+        <select class="date" name="date" required>
+            <option value="">Select a date</option>
+            <?php echo \App\ViewHelpers\ScoresHelper::datesDropdown($dateList) ?>
+        </select>
+        <button class="filter-button">Filter</button>
+        <button class="clear-filter">Clear Date Filter</button>
+    </div>
+    <div class="alert"></div>
+
+    <h3 class="listpage-heading">Scores by Game:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th class="t-game-header">Game</th>
+            <th class="center-in-t">C-dawg</th>
+            <th class="center-in-t">J-dawg</th>
+            <th class="center-in-t">Bestest</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php echo App\ViewHelpers\ScoresHelper::displayGameScores($allScores, $gameList) ?>
+        </tbody>
+    </table>
+</div>
+<?php require_once 'partials/footer.phtml' ?>
 </body>
+
 </html>
