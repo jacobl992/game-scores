@@ -32,12 +32,21 @@ class AddScoreController extends Controller
         $statusCode = 400;
 
         if ($this->scoresModel->scoreExistsValidation($newGameScore['player'], $newGameScore['game'], $newGameScore['date'])) {
+            try {
+                $updateScore = $this->scoresModel->updateScore($newGameScore);
+            } catch (\PDOException $pdoException) {
+                $responseData['message'] = 'Internal error: ' . $pdoException->getMessage();
+                $statusCode = 500;
+            } catch (\Exception $exception) {
+                $responseData['message'] = $exception->getMessage();
+            }
+
             $responseData = [
-                'success' => false,
-                'message' => 'Entry already exists',
+                'success' => true,
+                'message' => 'Score updated, new score is ' . $newGameScore['score'],
                 'data' => []
             ];
-            $statusCode = 422;
+            $statusCode = 200;
         } else {
             try {
                 $insertedId = $this->scoresModel->addScore($newGameScore);

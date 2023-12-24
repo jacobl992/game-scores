@@ -121,4 +121,39 @@ class ScoresHelper
         }
         return $output;
     }
+
+    public static function dateOnPage(array $allScores): string
+    {
+        $date = '';
+        foreach ($allScores as $score) {
+            if ($score['date'] !== $date) {
+                $date = $score['date'];
+            }
+        }
+        return $date;
+    }
+
+    public static function displayGameScoresForDatePage($allScores, $gameList): string
+    {
+        $output = '';
+        foreach ($gameList as $game) {
+            if (!in_array($game['id'] . ' - ' . self::dateOnPage($allScores), self::matchScores($allScores))) {
+                $cDawgScore = '-';
+                $jDawgScore = '-';
+                $scoreOutcome = '-';
+            } else {
+                $cDawgScore = self::filteredScoreByGame($allScores, self::matchScores($allScores), $game['id'], 'Cathy');
+                $jDawgScore = self::filteredScoreByGame($allScores, self::matchScores($allScores), $game['id'], 'Jake');
+                $scoreOutcome = self::scoreComparison($cDawgScore, $jDawgScore);
+            }
+
+
+            $output .= '<tr><td>' . $game['name'] . '</td>
+                        <td class="center-in-t">' . $cDawgScore . '</td>
+                        <td class="center-in-t">' . $jDawgScore . '</td>
+                        <td class="center-in-t">' . $scoreOutcome . '</td></tr>';;
+
+        }
+        return $output;
+    }
 }

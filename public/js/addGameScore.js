@@ -46,6 +46,7 @@ addScoreForm.addEventListener('submit', e => {
             .then(responseJson => {
                 if (responseJson.success) {
                     console.log(responseJson.message);
+                    formSuccess.innerHTML = responseJson.message;
                     formSuccess.style.display = 'block';
                 } else {
                     console.log(responseJson.message);
