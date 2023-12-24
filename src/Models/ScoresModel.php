@@ -110,6 +110,23 @@ class ScoresModel
         return $this->db->lastInsertId();
     }
 
+    public function updateScore(array $newGameScore): bool
+    {
+        $sql = "UPDATE `scores`
+            SET `score` = :score
+            WHERE `player` = :player
+            AND `game` = :game
+            AND `date` = :date;";
+
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':player', $newGameScore['player']);
+        $query->bindParam(':game', $newGameScore['game']);
+        $query->bindParam(':date', $newGameScore['date']);
+        $query->bindParam(':score', $newGameScore['score']);
+        $success = $query->execute();
+        return $success;
+    }
+
     public function scoreExistsValidation(string $player, string $game, string $date): bool
     {
         $sql = 'SELECT COUNT(*) as `count` FROM `scores` WHERE `player` = :player AND `game` = :game AND `date` = :date;';

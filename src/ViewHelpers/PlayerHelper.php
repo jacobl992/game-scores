@@ -40,7 +40,7 @@ class PlayerHelper
     {
         $output = '<h5>' . $date . '</h5>';
         foreach ($gameList as $game) {
-            $autoOutput = '<p>0</p>';
+            $autoOutput = '<p>-</p>';
             $scoreOutput = '';
             foreach ($allScores as $score) {
                 if ($date === $score['date'] && $game['id'] === $score['game'] && $score['player'] === self::getPlayer()) {
