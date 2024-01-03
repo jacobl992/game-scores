@@ -140,4 +140,15 @@ class ScoresModel
 
         return ($result['count'] > 0);
     }
+
+    public function getComparableScores(): array
+    {
+        $sql = 'SELECT s1.id, s1.date, s1.score, s1.player, s1.game
+                FROM `scores` s1
+                JOIN `scores` s2 ON s1.game = s2.game AND s1.date = s2.date
+                ORDER BY `date` DESC;';
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

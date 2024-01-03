@@ -48,6 +48,8 @@
         </tbody>
     </table>
 </div>
+<?php echo App\ViewHelpers\ScoresHelper::dayWinTally($comparableScores, $dateList) ?>
+
 <?php require_once 'partials/footer.phtml' ?>
 </body>
 </html>
