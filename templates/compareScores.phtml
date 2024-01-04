@@ -19,7 +19,7 @@
         day</span>
     <span class="instructions">Low is good, high is bad</span>
     <div class="overall-scores">
-        <h3 class="listpage-heading">Overall scores:</h3>
+        <h3 class="listpage-heading">Overall Totals:</h3>
         <?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
     </div>
 
@@ -48,7 +48,8 @@
         </tbody>
     </table>
 </div>
-<?php echo App\ViewHelpers\ScoresHelper::dayWinTally($comparableScores, $dateList) ?>
+<?php echo App\ViewHelpers\ScoresHelper::cathyWinTally($comparableScores, $dateList);
+echo App\ViewHelpers\ScoresHelper::comparablePlayerTotalScore($comparableScores, 'Cathy'); ?>
 
 <?php require_once 'partials/footer.phtml' ?>
 </body>
