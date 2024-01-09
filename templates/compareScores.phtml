@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="images/tabicon.png">
     <link rel="apple-touch-icon" href="images/tabicon.png">
     <script defer src="./js/goToFilterDate.js"></script>
+    <script defer src="./js/winningColors.js"></script>
 </head>
 
 <body>
@@ -17,10 +18,43 @@
     <h3 class="listpage-heading">Score Comparison</h3>
     <span class="instructions">When comparing, scores are only added to total if both players played the same game on the same
         day</span>
-    <span class="instructions">Low is good, high is bad</span>
+    <span class="instructions">Low is good, high is bad. Win tally = day-by-day results.</span>
     <div class="overall-scores">
-        <h3 class="listpage-heading">Overall scores:</h3>
-        <?php echo App\ViewHelpers\ScoresHelper::displayTotalScore($allScores) ?>
+
+        <h3 class="listpage-heading">Overall Totals:</h3>
+
+        <table id="score-compare-table">
+            <thead>
+            <tr>
+                <th class="t-game-header">Player</th>
+                <th class="center-in-t">Overall Score</th>
+                <th class="center-in-t">Win Tally</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="cathy-row">
+                <td>Cathy</td>
+                <td id="cathy-row-totalscore" class="center-in-t" data-totalscore="<?php echo App\ViewHelpers\ScoresHelper::comparablePlayerTotalScore($comparableScores, 'Cathy') ?>">
+                <?php echo App\ViewHelpers\ScoresHelper::comparablePlayerTotalScore($comparableScores, 'Cathy') ?>
+                </td>
+                <td id="cathy-row-wintally" class="center-in-t" data-wintally="<?php echo App\ViewHelpers\ScoresHelper::cathyWinTally($comparableScores, $dateList) ?>">
+                    <?php echo App\ViewHelpers\ScoresHelper::cathyWinTally($comparableScores, $dateList) ?>
+                </td>
+            </tr>
+
+            <tr id="jake-row">
+                <td>Jake</td>
+                <td id="jake-row-totalscore" class="center-in-t" data-totalscore="<?php echo App\ViewHelpers\ScoresHelper::comparablePlayerTotalScore($comparableScores, 'Jake') ?>">
+                    <?php echo App\ViewHelpers\ScoresHelper::comparablePlayerTotalScore($comparableScores, 'Jake') ?>
+                </td>
+                <td id="jake-row-wintally" class="center-in-t" data-wintally="<?php echo App\ViewHelpers\ScoresHelper::jakeWinTally($comparableScores, $dateList) ?>">
+                    <?php echo App\ViewHelpers\ScoresHelper::jakeWinTally($comparableScores, $dateList) ?>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
     </div>
 
     <span class="filter-header">Filter by date:</span>
@@ -48,6 +82,7 @@
         </tbody>
     </table>
 </div>
+
 <?php require_once 'partials/footer.phtml' ?>
 </body>
 </html>

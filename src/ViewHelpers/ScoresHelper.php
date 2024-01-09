@@ -156,4 +156,93 @@ class ScoresHelper
         }
         return $output;
     }
+
+    public static function cathyWinTally($comparableScores, $dateList) {
+        $cathyWins = 0;
+        $jakeWins = 0;
+
+        $cathyTotals = [];
+        $jakeTotals = [];
+
+        foreach ($dateList as $date) {
+            $cathyTotal = 0;
+            $jakeTotal = 0;
+
+            foreach ($comparableScores as $score) {
+                if ($score['player'] === 'Cathy' && $score['date'] === $date['date']) {
+                    $cathyTotal += $score['score'];
+                } elseif ($score['player'] === 'Jake' && $score['date'] === $date['date']) {
+                    $jakeTotal += $score['score'];
+                }
+            }
+
+            $cathyTotals[] = $cathyTotal;
+            $jakeTotals[] = $jakeTotal;
+        }
+
+        $numberOfComparableDays = count($cathyTotals);
+        for ($i = 0; $i < $numberOfComparableDays; $i++) {
+           if ($cathyTotals[$i] === $jakeTotals[$i]) {
+               $cathyWins += 1;
+               $jakeWins += 1;
+           } elseif ($cathyTotals[$i] > $jakeTotals[$i]) {
+               $cathyWins += 1;
+           } elseif ($cathyTotals[$i] < $jakeTotals[$i]) {
+               $jakeWins += 1;
+           }
+        }
+
+        return $cathyWins;
+    }
+
+    public static function jakeWinTally($comparableScores, $dateList) {
+        $cathyWins = 0;
+        $jakeWins = 0;
+
+        $cathyTotals = [];
+        $jakeTotals = [];
+
+        foreach ($dateList as $date) {
+            $cathyTotal = 0;
+            $jakeTotal = 0;
+
+            foreach ($comparableScores as $score) {
+                if ($score['player'] === 'Cathy' && $score['date'] === $date['date']) {
+                    $cathyTotal += $score['score'];
+                } elseif ($score['player'] === 'Jake' && $score['date'] === $date['date']) {
+                    $jakeTotal += $score['score'];
+                }
+            }
+
+            $cathyTotals[] = $cathyTotal;
+            $jakeTotals[] = $jakeTotal;
+        }
+
+        $numberOfComparableDays = count($cathyTotals);
+        for ($i = 0; $i < $numberOfComparableDays; $i++) {
+            if ($cathyTotals[$i] === $jakeTotals[$i]) {
+                $cathyWins += 1;
+                $jakeWins += 1;
+            } elseif ($cathyTotals[$i] > $jakeTotals[$i]) {
+                $cathyWins += 1;
+            } elseif ($cathyTotals[$i] < $jakeTotals[$i]) {
+                $jakeWins += 1;
+            }
+        }
+
+        return $jakeWins;
+    }
+
+    public static function comparablePlayerTotalScore (array $comparableScores, string $player): int
+    {
+        $playerTotal = 0;
+
+        foreach ($comparableScores as $score) {
+            if ($score['player'] === $player) {
+                $playerTotal += $score['score'];
+            }
+        }
+
+        return $playerTotal;
+    }
 }
