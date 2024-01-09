@@ -208,6 +208,10 @@ table, th, td {
     margin: 3px 0;
 }
 
+#score-compare-table {
+    margin-bottom: 4vw;
+}
+
 @media screen and (min-width: 750px) {
 
     .main-content h3 {
@@ -243,5 +247,9 @@ table, th, td {
 
     .game-list-and-header-box {
         margin-top: 2vw;
+    }
+
+    #score-compare-table {
+        margin-bottom: 2vw;
     }
 }
