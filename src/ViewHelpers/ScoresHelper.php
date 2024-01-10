@@ -185,9 +185,9 @@ class ScoresHelper
            if ($cathyTotals[$i] === $jakeTotals[$i]) {
                $cathyWins += 1;
                $jakeWins += 1;
-           } elseif ($cathyTotals[$i] > $jakeTotals[$i]) {
-               $cathyWins += 1;
            } elseif ($cathyTotals[$i] < $jakeTotals[$i]) {
+               $cathyWins += 1;
+           } elseif ($cathyTotals[$i] > $jakeTotals[$i]) {
                $jakeWins += 1;
            }
         }
@@ -223,9 +223,9 @@ class ScoresHelper
             if ($cathyTotals[$i] === $jakeTotals[$i]) {
                 $cathyWins += 1;
                 $jakeWins += 1;
-            } elseif ($cathyTotals[$i] > $jakeTotals[$i]) {
-                $cathyWins += 1;
             } elseif ($cathyTotals[$i] < $jakeTotals[$i]) {
+                $cathyWins += 1;
+            } elseif ($cathyTotals[$i] > $jakeTotals[$i]) {
                 $jakeWins += 1;
             }
         }
